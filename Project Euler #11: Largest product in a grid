@@ -1,0 +1,69 @@
+#include <map>
+#include <set>
+#include <list>
+#include <cmath>
+#include <ctime>
+#include <deque>
+#include <queue>
+#include <stack>
+#include <string>
+#include <bitset>
+#include <cstdio>
+#include <limits>
+#include <vector>
+#include <climits>
+#include <cstring>
+#include <cstdlib>
+#include <fstream>
+#include <numeric>
+#include <sstream>
+#include <iostream>
+#include <algorithm>
+#include <unordered_map>
+
+using namespace std;
+
+
+int main(){
+    vector< vector<int> > grid(20,vector<int>(20));
+    for(int grid_i = 0;grid_i < 20;grid_i++){
+    	for(int grid_j = 0;grid_j < 20;grid_j++){
+    		cin >> grid[grid_i][grid_j];
+    	}
+    }
+
+    int max=-1;
+    for(int grid_i = 0;grid_i < 20;grid_i++){
+        for(int grid_j = 0;grid_j < 17;grid_j++){
+            int mult=grid[grid_i][grid_j]*grid[grid_i][grid_j+1]*grid[grid_i][grid_j+2]*grid[grid_i][grid_j+3];
+            if(mult>max)
+            max=mult;
+        }
+    }
+    for(int grid_i = 0;grid_i < 17;grid_i++){
+        for(int grid_j = 0;grid_j < 20;grid_j++){
+            int mult=grid[grid_i][grid_j]*grid[grid_i+1][grid_j]*grid[grid_i+2][grid_j]*grid[grid_i+3][grid_j];
+            if(mult>max)
+            max=mult;
+        }
+    }
+        for(int grid_i = 0;grid_i < 17;grid_i++){
+        for(int grid_j = 0;grid_j < 17;grid_j++){
+            int mult=grid[grid_i][grid_j]*grid[grid_i+1][grid_j+1]*grid[grid_i+2][grid_j+2]*grid[grid_i+3][grid_j+3];
+            if(mult>max)
+            max=mult;
+        }
+    }
+    for(int grid_i = 0;grid_i < 17;grid_i++){
+        for(int grid_j = 0;grid_j < 17;grid_j++){
+            int mult=grid[grid_i][grid_j+3]*grid[grid_i+1][grid_j+2]*grid[grid_i+2][grid_j+1]*grid[grid_i+3][grid_j];
+            if(mult>max)
+            max=mult;
+        }
+    }
+    cout<<max<<endl;
+
+    
+    return 0;
+}
+
